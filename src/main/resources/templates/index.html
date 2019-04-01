@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="renderer" content="webkit">
+    <title>hello</title>
+    <link rel="shortcut icon" th:href="@{/favicon.ico}"/>
+    <link th:href="@{/static/css/layui.css}" rel="stylesheet"/>
+</head>
+<body>
+<div class="layui-container">
+  <div class="layui-row">
+hello world
+  </div></div>
+<script th:src="@{/static/js/jquery.min.js}"></script>
+<script th:src="@{/static/layui.js}"></script>
+<script th:src="@{/static/js/global.js}"></script>
+
+<script type="text/javascript">
+layui.use(['form','layedit'], function(){
+	  var form = layui.form
+	  ,layer = layui.layer
+	  ,layedit = layui.layedit;
+	  form.render();
+
+})
+function query(){
+	layui.use(['common','layer'], function () {
+		        var common = layui.common;
+		                var layer = layui.layer;
+		                var index = layer.load(2);
+		        common.ajax('/dealerQuery', 'post', 'json', {
+		            'dealer_code': $("#dealer_code").val(),
+		        }, function (res) {
+			if(res.length==0){
+				  layer.msg("未找到数据");
+				  layer.close(index);
+                    return;
+			}
+				  layer.close(index);
+		        });
+		    });
+		}
+/* 鼠标点击特效 */
+var a_idx = 0;
+jQuery(document).ready(function($) {
+    $("body").click(function(e) {
+var a = new Array("富强", "民主", "文明", "和谐", "自由", "平等", "公正" ,"法治", "爱国", "敬业", "诚信", "友善");
+var $i = $("<span/>").text(a[a_idx]);
+        a_idx = (a_idx + 1) % a.length;
+var x = e.pageX,
+        y = e.pageY;
+        $i.css({
+"z-index": 999999999999999999999999999999999999999999999999999999999999999999999,
+"top": y - 20,
+"left": x,
+"position": "absolute",
+"font-weight": "bold",
+"color": "#ff6651"
+        });
+        $("body").append($i);
+        $i.animate({
+"top": y - 180,
+"opacity": 0
+        },
+        1500,
+function() {
+            $i.remove();
+        });
+    });
+});
+</script>
+</body>
+</html>
