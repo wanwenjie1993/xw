@@ -1,5 +1,7 @@
 package com.wwj1.util;
-
+/**
+ * 工具类
+ */
 
 import java.awt.Image;
 import java.io.InputStream;
