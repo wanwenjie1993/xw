@@ -2,3 +2,9 @@
 * thymeleaf
 * mysql
 * druid
+* mybatis
+* fastjson
+* generator
+* jsoup
+* log4j
+* layui

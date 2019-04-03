@@ -7,11 +7,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 
+
 @Controller
 @EnableAutoConfiguration
 public class indexController{
 	private static Logger log =LoggerFactory.getLogger(indexController.class);
-	static DbPoolConnection dbp = DbPoolConnection.getInstance();
 	@RequestMapping({"/","/index"})
 	public String index(){
 		log.info("go to index");
