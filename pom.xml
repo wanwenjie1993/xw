@@ -9,8 +9,8 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.ezvn</groupId>
-    <artifactId>xw</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <artifactId>jar</artifactId>
+    <version>20190403</version>
     <packaging>war</packaging>
     <name>xw</name>
     <description>Demo project for Spring Boot</description>

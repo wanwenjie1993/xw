@@ -1,15 +1,11 @@
 package com.wwj1.controller;
 
-import com.alibaba.druid.pool.DruidPooledConnection;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.stereotype.Controller;
-import com.wwj1.common.DbPoolConnection;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 
 @Controller
 @EnableAutoConfiguration
@@ -18,6 +14,13 @@ public class indexController{
 	static DbPoolConnection dbp = DbPoolConnection.getInstance();
 	@RequestMapping({"/","/index"})
 	public String index(){
+		log.info("go to index");
+     return "index";
+	}
+
+
+	/*@RequestMapping({"/","/index"})
+	public String index2(){
 		try {
 			DruidPooledConnection con = dbp.getConnection();
 			PreparedStatement ps = con.prepareStatement("select * from b3_solo_article");
@@ -29,10 +32,9 @@ public class indexController{
 			ps.close();
 			con.close();
 		}catch (Exception e){
-log.info(e.getMessage());
+			log.info(e.getMessage());
 		}
 		log.info("go to index");
-     return "index";
-	}
-
+		return "index";
+	}*/
 }
