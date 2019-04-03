@@ -8,3 +8,4 @@
 * jsoup
 * log4j
 * layui
+* devtools

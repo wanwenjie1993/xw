@@ -6,7 +6,6 @@ server:
 mybatis:
   typeAliasesPackage: com.wanwj1.entity
   mapperLocations: classpath:mappers/*.xml
-
 #数据库配置
 spring:
   thymeleaf:
@@ -18,6 +17,14 @@ spring:
     #content-type: text/html
     servlet:
           content-type: text/html
+    devtools:
+        restart:
+            #热部署生效
+          enabled: true
+            #设置重启的目录
+          #additional-paths: src/main/java
+          #classpath目录下的WEB-INF文件夹内容修改不重启
+          exclude: WEB-INF/**
   datasource:
     url: jdbc:mysql://localhost:3306/wanwj1?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
     username: root
