@@ -26,7 +26,7 @@ spring:
           #classpath目录下的WEB-INF文件夹内容修改不重启
           exclude: WEB-INF/**
   datasource:
-    url: jdbc:mysql://localhost:3306/wanwj1?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+    url: jdbc:mysql://localhost:3306/xw?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
     username: root
     password: wanwj1
     driver-class-name: com.mysql.cj.jdbc.Driver

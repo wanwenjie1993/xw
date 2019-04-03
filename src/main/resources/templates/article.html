@@ -10,10 +10,20 @@
     <link th:href="@{/static/css/layui.css}" rel="stylesheet"/>
 </head>
 <body>
-<div class="layui-container">
-  <div class="layui-row">
-      article cnm
-  </div></div>
+<div class="layui-container" th:each="articleList:${articleList}">
+    <div class="layui-row">
+        <div class="layui-col-md9">
+            <p th:text="${articleList.getArticleid()}"></p>
+        </div>
+        <div class="layui-col-md3">
+            你的内容 3/12
+        </div>
+    </div>
+</div>
+<!--
+<div class="layui-row" th:each="articleList:${articleList}">
+    <p th:text="${articleList.getArticleid()}"></p>
+</div>-->
 <script th:src="@{/static/js/jquery.min.js}"></script>
 <script th:src="@{/static/layui.js}"></script>
 <script th:src="@{/static/js/global.js}"></script>

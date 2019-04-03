@@ -1,6 +1,6 @@
 <component name="ArtifactManager">
   <artifact type="war" name="xw:war">
-    <output-path>$PROJECT_DIR$/target</output-path>
+    <output-path>$PROJECT_DIR$/../xw/target</output-path>
     <root id="archive" name="jar-20190403.war">
       <element id="artifact" artifact-name="xw:war exploded" />
     </root>
