@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wwj1.dao.XwArticleMapper" >
+  <resultMap id="BaseResultMap" type="com.wwj1.entity.XwArticle" >
+    <id column="articleId" property="articleid" jdbcType="INTEGER" />
+    <result column="articleTitle" property="articletitle" jdbcType="VARCHAR" />
+    <result column="articleTag" property="articletag" jdbcType="VARCHAR" />
+    <result column="update_date" property="updateDate" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.wwj1.entity.XwArticle" extends="BaseResultMap" >
+    <result column="articleContent" property="articlecontent" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    articleId, articleTitle, articleTag, update_date
+  </sql>
+  <sql id="Blob_Column_List" >
+    articleContent
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from xw_article
+    where articleId = #{articleid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from xw_article
+    where articleId = #{articleid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.wwj1.entity.XwArticle" >
+    insert into xw_article (articleId, articleTitle, articleTag, 
+      update_date, articleContent)
+    values (#{articleid,jdbcType=INTEGER}, #{articletitle,jdbcType=VARCHAR}, #{articletag,jdbcType=VARCHAR}, 
+      #{updateDate,jdbcType=TIMESTAMP}, #{articlecontent,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.wwj1.entity.XwArticle" >
+    insert into xw_article
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="articleid != null" >
+        articleId,
+      </if>
+      <if test="articletitle != null" >
+        articleTitle,
+      </if>
+      <if test="articletag != null" >
+        articleTag,
+      </if>
+      <if test="updateDate != null" >
+        update_date,
+      </if>
+      <if test="articlecontent != null" >
+        articleContent,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="articleid != null" >
+        #{articleid,jdbcType=INTEGER},
+      </if>
+      <if test="articletitle != null" >
+        #{articletitle,jdbcType=VARCHAR},
+      </if>
+      <if test="articletag != null" >
+        #{articletag,jdbcType=VARCHAR},
+      </if>
+      <if test="updateDate != null" >
+        #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="articlecontent != null" >
+        #{articlecontent,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.wwj1.entity.XwArticle" >
+    update xw_article
+    <set >
+      <if test="articletitle != null" >
+        articleTitle = #{articletitle,jdbcType=VARCHAR},
+      </if>
+      <if test="articletag != null" >
+        articleTag = #{articletag,jdbcType=VARCHAR},
+      </if>
+      <if test="updateDate != null" >
+        update_date = #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="articlecontent != null" >
+        articleContent = #{articlecontent,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where articleId = #{articleid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.wwj1.entity.XwArticle" >
+    update xw_article
+    set articleTitle = #{articletitle,jdbcType=VARCHAR},
+      articleTag = #{articletag,jdbcType=VARCHAR},
+      update_date = #{updateDate,jdbcType=TIMESTAMP},
+      articleContent = #{articlecontent,jdbcType=LONGVARCHAR}
+    where articleId = #{articleid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.wwj1.entity.XwArticle" >
+    update xw_article
+    set articleTitle = #{articletitle,jdbcType=VARCHAR},
+      articleTag = #{articletag,jdbcType=VARCHAR},
+      update_date = #{updateDate,jdbcType=TIMESTAMP}
+    where articleId = #{articleid,jdbcType=INTEGER}
+  </update>
+</mapper>
